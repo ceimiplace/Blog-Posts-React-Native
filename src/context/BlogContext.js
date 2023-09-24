@@ -13,8 +13,11 @@ export const BlogProvider = ({ children }) => {
   function removeBlogs() {
     dispatch("remove_blogs");
   }
+  function changeBlog(title,content,id){
+    dispatch({type:"change_blog",payload:{title,content,id}})
+  }
   return (
-    <BlogContext.Provider value={{ blogPosts, addBlog, removeBlogs }}>
+    <BlogContext.Provider value={{ blogPosts, addBlog, removeBlogs,changeBlog }}>
       {children}
     </BlogContext.Provider>
   );
