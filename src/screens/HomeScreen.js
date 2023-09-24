@@ -1,11 +1,19 @@
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Button } from "react-native";
 import BlogContext from "../context/BlogContext";
-const HomeScreen = () => {
-  const value = useContext(BlogContext);
+const HomeScreen = ({ navigation }) => {
+  const { blogPosts, addBlog } = useContext(BlogContext);
   return (
     <View>
-      <Text>Home screen</Text>
+      <FlatList
+        data={blogPosts}
+        keyExtractor={(item) => `${item.id}`}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate("Show")}>
+            <Text>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
     </View>
   );
 };
