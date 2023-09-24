@@ -9,11 +9,14 @@ const HomeScreen = ({ navigation }) => {
         data={blogPosts}
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate("Show")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Show", { blogId: item.id })}
+          >
             <Text>{item.title}</Text>
           </TouchableOpacity>
         )}
       />
+      <Button title="add something" onPress={() => addBlog("hi there")} />
     </View>
   );
 };
